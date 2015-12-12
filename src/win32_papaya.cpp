@@ -1,12 +1,16 @@
+#include <windows.h>
+#include <windowsx.h>
+#include <malloc.h>
+#include <commdlg.h>
+
+#undef GetWindowFont
+
+
 #include "papaya_platform_common.impl"
 
 #define PAPAYA_DEFAULT_IMAGE "C:\\Users\\Apoorva\\Pictures\\ImageTest\\test4k.jpg"
 #include "papaya.cpp"
 
-#include <windows.h>
-#include <windowsx.h>
-#include <malloc.h>
-#include <commdlg.h>
 
 // =================================================================================================
 global_variable HDC DeviceContext;
@@ -385,17 +389,18 @@ int CALLBACK WinMain(HINSTANCE Instance, HINSTANCE PrevInstance, LPSTR CommandLi
             HGLRC TempRenderingContext = wglCreateContext(DeviceContext);
             wglMakeCurrent(DeviceContext, TempRenderingContext);
 
-            if (gl3wInit() != 0)
+            if (glewInit() != 0)
             {
                 // TODO: Log: GL3W Init failed
                 exit(1);
             }
 
-            if (!gl3wIsSupported(3,1))
-            {
-                // TODO: Log: Required OpenGL version not supported
-                exit(1);
-            }
+			//TODO: switch to GLWF
+            //if (!glewIs(3,1))
+            //{
+            //    // TODO: Log: Required OpenGL version not supported
+            //    exit(1);
+            //}
 
             RenderingContext = wglCreateContext(DeviceContext); // This creates a context of the latest supported version
 

@@ -1,7 +1,6 @@
 #pragma once
 
-#include "gl3w.h"
-#include "gl3w.c"
+#include "GL/glew.h"
 
 #include "papaya_math.h"
 #include "papaya_platform.h"
