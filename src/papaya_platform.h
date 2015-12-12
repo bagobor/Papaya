@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdio.h>
+
 struct PapayaMemory;
 
 namespace Platform
@@ -12,6 +14,8 @@ namespace Platform
     char* OpenFileDialog();
     char* SaveFileDialog();
 
+	FILE* openFile(const char* filename, const char* flags);
+	
 	int64 GetMilliseconds();
 
 	PapayaMemory* GetMem();

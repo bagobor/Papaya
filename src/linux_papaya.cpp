@@ -1,37 +1,14 @@
-#include <stdint.h>
-#include <stdarg.h>
-
-#define internal static
-#define local_persist static
-#define global_variable static
-
-typedef int8_t int8;
-typedef int16_t int16;
-typedef int32_t int32;
-typedef int64_t int64;
-typedef int32 bool32;
-
-typedef uint8_t uint8;
-typedef uint16_t uint16;
-typedef uint32_t uint32;
-typedef uint64_t uint64;
-
-typedef float real32;
-typedef double real64;
+#define PAPAYA_DEFAULT_IMAGE "/home/apoorva/Downloads/test4k.jpg"
+#include "papaya_platform_common.impl"
 
 #pragma GCC diagnostic ignored "-Wwrite-strings" //TODO: Check if all string warnings can be eliminated without suppression
 #include <x86intrin.h>
 
-#define PAPAYA_DEFAULT_IMAGE "/home/apoorva/Downloads/test4k.jpg"
-#include "papaya.h"
 #include "papaya.cpp"
 
 #include <X11/Xlib.h>
 #include <unistd.h>
-#include <stdio.h>
 #include <time.h>
-#define EASYTAB_IMPLEMENTATION
-#include "easytab.h"
 
 #ifdef USE_GTK
 #include <gtk/gtk.h>
@@ -81,78 +58,6 @@ void Platform::SetCursorVisibility(bool Visible)
     }
 }
 
-char* Platform::OpenFileDialog()
-{
-#ifndef USE_GTK
-    return 0;
-#else
-    GtkWidget *Dialog = gtk_file_chooser_dialog_new(
-        "Open File",
-        NULL,
-        GTK_FILE_CHOOSER_ACTION_OPEN,
-        "Cancel", GTK_RESPONSE_CANCEL,
-        "Open", GTK_RESPONSE_ACCEPT,
-        NULL
-    );
-    GtkFileChooser *Chooser = GTK_FILE_CHOOSER(Dialog);
-    GtkFileFilter *Filter = gtk_file_filter_new();
-    gtk_file_filter_add_pattern(Filter, "*.[pP][nN][gG]");
-    gtk_file_filter_add_pattern(Filter, "*.[jJ][pP][gG]");
-    gtk_file_filter_add_pattern(Filter, "*.[jJ][pP][eE][gG]");
-    gtk_file_chooser_add_filter(Chooser, Filter);
-
-    char *OutFilename = 0;
-    if (gtk_dialog_run(GTK_DIALOG(Dialog)) == GTK_RESPONSE_ACCEPT)
-    {
-        gchar *GTKFilename = gtk_file_chooser_get_filename(Chooser);
-        int FilenameLen = strlen(GTKFilename) + 1; // +1 for terminator
-        OutFilename = (char*)malloc(FilenameLen);
-        strcpy(OutFilename, GTKFilename);
-        g_free(GTKFilename);
-    }
-
-    gtk_widget_destroy(Dialog);
-
-    return OutFilename;
-#endif
-}
-
-char* Platform::SaveFileDialog()
-{
-#ifndef USE_GTK
-    return 0;
-#else
-    GtkWidget *Dialog = gtk_file_chooser_dialog_new(
-        "Save File",
-        NULL,
-        GTK_FILE_CHOOSER_ACTION_SAVE,
-        "Cancel", GTK_RESPONSE_CANCEL,
-        "Save", GTK_RESPONSE_ACCEPT,
-        NULL
-    );
-    GtkFileChooser *Chooser = GTK_FILE_CHOOSER(Dialog);
-    GtkFileFilter *Filter = gtk_file_filter_new();
-    gtk_file_filter_add_pattern(Filter, "*.[pP][nN][gG]");
-    gtk_file_chooser_add_filter(Chooser, Filter);
-    gtk_file_chooser_set_do_overwrite_confirmation(Chooser, TRUE);
-    gtk_file_chooser_set_filename(Chooser, "untitled.png"); // what if the user saves a file that already has a name?
-
-    char *OutFilename = 0;
-    if (gtk_dialog_run(GTK_DIALOG(Dialog)) == GTK_RESPONSE_ACCEPT)
-    {
-        gchar *GTKFilename = gtk_file_chooser_get_filename(Chooser);
-        int FilenameLen = strlen(GTKFilename) + 1; // +1 for terminator
-        OutFilename = (char*)malloc(FilenameLen);
-        strcpy(OutFilename, GTKFilename);
-        g_free(GTKFilename);
-    }
-
-    gtk_widget_destroy(Dialog);
-
-    return OutFilename;
-#endif
-}
-
 int64 Platform::GetMilliseconds()
 {
     timespec Time;
@@ -164,8 +69,6 @@ int64 Platform::GetMilliseconds()
 
 int main(int argc, char **argv)
 {
-    PapayaMemory Mem = {0};
-
     Mem.Debug.TicksPerSecond = 1000;
     Util::StartTime(Timer_Startup, &Mem);
 
@@ -409,4 +312,10 @@ int main(int argc, char **argv)
     EasyTab_Unload();
 
     return 0;
+}
+
+FILE* Platform::openFile(const char* filename, const char* flags) {
+	if (!file || !flags) return NULL;
+	FILE* file = fopen(filename, flags);
+	return file;
 }

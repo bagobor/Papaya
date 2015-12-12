@@ -9,6 +9,8 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb/stb_image_write.h"
 
+//#define SHOW_UNDO_BUFFER 1
+
 namespace Papaya
 {
 
@@ -178,11 +180,17 @@ internal void PushUndo(PapayaMemory* Mem)
 
 internal bool OpenDocument(char* Path, PapayaMemory* Mem)
 {
+	if (!Path) return false;
+
     Util::StartTime(Timer_ImageOpen, Mem);
 
+	FILE *file = Platform::openFile(Path, "rb");
+	if (!file) return false;
+	
     // Load image
     {
-        uint8* Texture = stbi_load(Path, &Mem->Doc.Width, &Mem->Doc.Height, &Mem->Doc.ComponentsPerPixel, 4);
+        uint8* Texture = stbi_load_from_file(file, &Mem->Doc.Width, &Mem->Doc.Height, &Mem->Doc.ComponentsPerPixel, 4);
+		fclose(file);
 
         if (!Texture) { return false; }
 
@@ -1427,7 +1435,7 @@ void UpdateAndRender(PapayaMemory* Mem)
             }
         }
 
-#if 0
+#if SHOW_UNDO_BUFFER
         // =========================================================================================
         // Visualization: Undo buffer
 

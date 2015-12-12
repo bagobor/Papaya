@@ -1,51 +1,19 @@
-#include <stdint.h>
-#include <stdarg.h>
-
-#define internal static
-#define local_persist static
-#define global_variable static
-
-typedef int8_t int8;
-typedef int16_t int16;
-typedef int32_t int32;
-typedef int64_t int64;
-typedef int32 bool32;
-
-typedef uint8_t uint8;
-typedef uint16_t uint16;
-typedef uint32_t uint32;
-typedef uint64_t uint64;
-
-typedef float real32;
-typedef double real64;
+#include "papaya_platform_common.impl"
 
 #define PAPAYA_DEFAULT_IMAGE "C:\\Users\\Apoorva\\Pictures\\ImageTest\\test4k.jpg"
-#include "papaya.h"
 #include "papaya.cpp"
 
 #include <windows.h>
 #include <windowsx.h>
-#include <stdio.h>
 #include <malloc.h>
 #include <commdlg.h>
 
-//#include "win32_tablet.h"
-#define EASYTAB_IMPLEMENTATION
-#include "easytab/easytab.h"
-
 // =================================================================================================
-
-global_variable PapayaMemory Mem = {};
 global_variable HDC DeviceContext;
 global_variable HGLRC RenderingContext;
 global_variable RECT WindowsWorkArea; // Needed because WS_POPUP by default maximizes to cover task bar
 
 // =================================================================================================
-struct PapayaMemory* Platform::GetMem() {
-	return &Mem;
-}
-
-
 void Platform::Print(char* Message)
 {
     OutputDebugString((LPCSTR)Message);
@@ -71,79 +39,6 @@ void Platform::SetMousePosition(Vec2 Pos)
 void Platform::SetCursorVisibility(bool Visible)
 {
     ShowCursor(Visible);
-}
-
-char* Platform::OpenFileDialog()
-{
-    const int32 FileNameSize = MAX_PATH;
-    char* FileName = (char*)malloc(FileNameSize);
-
-    OPENFILENAME DialogParams   = {};
-    DialogParams.lStructSize    = sizeof(OPENFILENAME);
-    DialogParams.hwndOwner      = GetActiveWindow();
-    DialogParams.lpstrFilter    = "JPEG\0*.jpg;*.jpeg\0PNG\0*.png\0";
-    DialogParams.nFilterIndex   = 2;
-    DialogParams.lpstrFile      = FileName;
-    DialogParams.lpstrFile[0]   = '\0';
-    DialogParams.nMaxFile       = FileNameSize;
-    DialogParams.Flags          = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
-
-    BOOL Result = GetOpenFileNameA(&DialogParams); // TODO: Unicode support?
-
-    if (Result)
-    {
-        return FileName;
-    }
-    else
-    {
-        free(FileName);
-        return 0;
-    }
-}
-
-char* Platform::SaveFileDialog()
-{
-    const int32 FileNameSize = MAX_PATH;
-    char* FileName = (char*)malloc(FileNameSize);
-
-    OPENFILENAME DialogParams = {};
-    DialogParams.lStructSize = sizeof(OPENFILENAME);
-    DialogParams.hwndOwner = GetActiveWindow();
-    DialogParams.lpstrFilter = "PNG\0*.png\0";
-    DialogParams.nFilterIndex = 2;
-    DialogParams.lpstrFile = FileName;
-    DialogParams.lpstrFile[0] = '\0';
-    DialogParams.nMaxFile = FileNameSize;
-    DialogParams.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_OVERWRITEPROMPT;
-
-    BOOL Result = GetSaveFileNameA(&DialogParams); // TODO: Unicode support?
-
-    // Suffix .png if required
-    {
-        size_t L = strlen(FileName);
-        if (L <= FileNameSize - 4 &&                                //
-            !((FileName[L-4] == '.') &&                             // Ugh.
-              (FileName[L-3] == 'p' || FileName[L-3] == 'P') &&     // TODO: Write some string utility functions
-              (FileName[L-2] == 'n' || FileName[L-2] == 'N') &&     //       and clean this up.
-              (FileName[L-1] == 'g' || FileName[L-1] == 'G')))      //       Also, support for more than just PNGs.
-        {
-            strcat(FileName, ".png");
-        }
-    }
-
-    char Buffer[256];
-    sprintf(Buffer, "%s\n", FileName);
-    OutputDebugStringA(Buffer);
-
-    if (Result)
-    {
-        return FileName;
-    }
-    else
-    {
-        free(FileName);
-        return 0;
-    }
 }
 
 int64 Platform::GetMilliseconds()
@@ -743,4 +638,26 @@ int CALLBACK WinMain(HINSTANCE Instance, HINSTANCE PrevInstance, LPSTR CommandLi
     EasyTab_Unload();
 
     return 0;
+}
+
+
+FILE* Platform::openFile(const char* filename, const char* flags) {
+	const int requiredSizeFilename = MultiByteToWideChar(CP_UTF8, 0, filename, -1, 0, 0);
+	const int requiredSizeFlags = MultiByteToWideChar(CP_UTF8, 0, flags, -1, 0, 0);
+	if (requiredSizeFilename <= 0 || requiredSizeFlags <=0 ) return NULL;
+	wchar_t *buffFilename = (wchar_t *)malloc(sizeof(wchar_t)*requiredSizeFilename);
+	wchar_t *buffFlags = (wchar_t *)malloc(sizeof(wchar_t)*requiredSizeFlags);
+	
+	const int resFilename = MultiByteToWideChar(CP_UTF8, 0, filename, -1, buffFilename, requiredSizeFilename);
+	const int resFlags = MultiByteToWideChar(CP_UTF8, 0, filename, -1, buffFlags, requiredSizeFlags);
+
+	FILE* file = NULL;
+	if (resFilename > 0 && resFilename > 0) {
+		file = _wfopen(buffFilename, buffFlags);
+	}
+
+	free(buffFilename);
+	free(buffFlags);
+
+	return file;
 }
