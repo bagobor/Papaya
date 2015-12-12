@@ -264,7 +264,7 @@ static void leaveFullscreenMode(_GLFWwindow* window)
 static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg,
                                    WPARAM wParam, LPARAM lParam)
 {
-    _GLFWwindow* window = (_GLFWwindow*) GetWindowLongPtrW(hWnd, 0);
+    _GLFWwindow* window = (_GLFWwindow*) GetWindowLongPtrW(hWnd, 0);	
 
     switch (uMsg)
     {
@@ -628,6 +628,13 @@ static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg,
             return 0;
         }
     }
+
+	WNDPROC custom_proc = window ? (WNDPROC)window->userPointer : NULL;
+	if (custom_proc) {
+		LRESULT res = custom_proc(hWnd, uMsg, wParam, lParam);
+		if (res >= 0)
+			return res;
+	}
 
     return DefWindowProc(hWnd, uMsg, wParam, lParam);
 }
