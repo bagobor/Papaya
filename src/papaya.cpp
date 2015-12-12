@@ -1,10 +1,13 @@
 #pragma warning (disable: 4312) // Warning C4312 during 64 bit compilation: 'type cast': conversion from 'uint32' to 'void *' of greater size
+
+#define _CRT_SECURE_NO_WARNINGS 1
+
 #define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
+#include "stb/stb_image.h"
 #pragma warning (default: 4312)
 
 #define STB_IMAGE_WRITE_IMPLEMENTATION
-#include "stb_image_write.h"
+#include "stb/stb_image_write.h"
 
 namespace Papaya
 {
@@ -1810,7 +1813,7 @@ EndOfDoc:
         }
     }
 
-    ImGui::Render(Mem);
+	ImGui::Render();
 
     // Color Picker Panel
     {
@@ -1946,9 +1949,9 @@ EndOfDoc:
     }
 }
 
-void RenderImGui(ImDrawData* DrawData, void* MemPtr)
+void RenderImGui(ImDrawData* DrawData)
 {
-    PapayaMemory* Mem = (PapayaMemory*)MemPtr;
+	PapayaMemory* Mem = Platform::GetMem();
 
     // Backup GL state
     GLint last_program, last_texture, last_array_buffer, last_element_array_buffer, last_vertex_array;

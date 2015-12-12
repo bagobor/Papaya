@@ -74,7 +74,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\src;$(SolutionDir)\..\..\ext\nativefiledialog\src\include;$(SolutionDir)\..\..\ext\;$(SolutionDir)\..\..\ext\imgui</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -86,7 +87,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\src;$(SolutionDir)\..\..\ext\nativefiledialog\src\include;$(SolutionDir)\..\..\ext\;$(SolutionDir)\..\..\ext\imgui</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -100,7 +102,8 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\src;$(SolutionDir)\..\..\ext\nativefiledialog\src\include;$(SolutionDir)\..\..\ext\;$(SolutionDir)\..\..\ext\imgui</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -116,7 +119,8 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\src;$(SolutionDir)\..\..\ext\nativefiledialog\src\include;$(SolutionDir)\..\..\ext\;$(SolutionDir)\..\..\ext\imgui</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -126,27 +130,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\easytab.h" />
+    <ClInclude Include="..\..\ext\imgui\imconfig.h" />
+    <ClInclude Include="..\..\ext\imgui\imgui.h" />
+    <ClInclude Include="..\..\ext\imgui\imgui_internal.h" />
+    <ClInclude Include="..\..\ext\imgui\stb_rect_pack.h" />
+    <ClInclude Include="..\..\ext\imgui\stb_textedit.h" />
+    <ClInclude Include="..\..\ext\imgui\stb_truetype.h" />
+    <ClInclude Include="..\..\ext\nativefiledialog\src\common.h" />
+    <ClInclude Include="..\..\ext\nativefiledialog\src\nfd_common.h" />
     <ClInclude Include="..\..\src\gl3w.c" />
     <ClInclude Include="..\..\src\gl3w.h" />
     <ClInclude Include="..\..\src\glcorearb.h" />
-    <ClInclude Include="..\..\src\imconfig.h" />
-    <ClInclude Include="..\..\src\imgui.cpp" />
-    <ClInclude Include="..\..\src\imgui.h" />
-    <ClInclude Include="..\..\src\imgui_internal.h" />
     <ClInclude Include="..\..\src\papaya.cpp" />
-    <ClInclude Include="..\..\src\imgui_demo.cpp" />
-    <ClInclude Include="..\..\src\imgui_draw.cpp" />
+    <ClCompile Include="..\..\ext\imgui\imgui.cpp" />
+    <ClCompile Include="..\..\ext\imgui\imgui_demo.cpp" />
+    <ClCompile Include="..\..\ext\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\..\ext\nativefiledialog\src\nfd_common.c" />
+    <ClCompile Include="..\..\ext\nativefiledialog\src\nfd_win.cpp" />
     <ClCompile Include="..\..\src\win32_papaya.cpp" />
     <ClInclude Include="..\..\src\papaya.h" />
     <ClInclude Include="..\..\src\papaya_math.h" />
     <ClInclude Include="..\..\src\papaya_platform.h" />
     <ClInclude Include="..\..\src\papaya_util.h" />
-    <ClInclude Include="..\..\src\stb_image.h" />
-    <ClInclude Include="..\..\src\stb_image_write.h" />
-    <ClInclude Include="..\..\src\stb_rect_pack.h" />
-    <ClInclude Include="..\..\src\stb_textedit.h" />
-    <ClInclude Include="..\..\src\stb_truetype.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

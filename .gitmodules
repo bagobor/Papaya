@@ -1,0 +1,12 @@
+[submodule "ext/nativefiledialog"]
+	path = ext/nativefiledialog
+	url = https://github.com/mlabbe/nativefiledialog.git
+[submodule "ext/stb"]
+	path = ext/stb
+	url = https://github.com/nothings/stb.git
+[submodule "ext/imgui"]
+	path = ext/imgui
+	url = https://github.com/ocornut/imgui.git
+[submodule "ext/easytab"]
+	path = ext/easytab
+	url = https://github.com/ApoorvaJ/EasyTab.git

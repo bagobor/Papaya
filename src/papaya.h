@@ -5,12 +5,22 @@
 
 #include "papaya_math.h"
 #include "papaya_platform.h"
+
+// Implicit conversions between papaya_math.h structs and imgui.h structs
+#define IM_VEC2_CLASS_EXTRA                                               \
+        ImVec2(const Vec2& f) { x = f.x; y = f.y; }                       \
+        operator Vec2() const { return Vec2(x,y); }
+
+#define IM_VEC4_CLASS_EXTRA                                               \
+        ImVec4(const Color& f){ x = f.r; y = f.g; z = f.b; w = f.a; }     \
+        operator Color() const { return Color(x,y,z,w); }
+
 #include "imgui.h"
-#include "imgui_draw.cpp"
-#include "imgui.cpp"
-#pragma warning (disable: 4312) // Warning C4312 during 64 bit compilation: 'type cast': conversion from 'uint32' to 'void *' of greater size
-#include "imgui_demo.cpp"
-#pragma warning (default: 4312)
+//#include "imgui_draw.cpp"
+//#include "imgui.cpp"
+//#pragma warning (disable: 4312) // Warning C4312 during 64 bit compilation: 'type cast': conversion from 'uint32' to 'void *' of greater size
+//#include "imgui_demo.cpp"
+//#pragma warning (default: 4312)
 
 #define ArrayCount(Array) (sizeof(Array) / sizeof((Array)[0]))
 

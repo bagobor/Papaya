@@ -31,7 +31,7 @@ typedef double real64;
 
 //#include "win32_tablet.h"
 #define EASYTAB_IMPLEMENTATION
-#include "easytab.h"
+#include "easytab/easytab.h"
 
 // =================================================================================================
 
@@ -41,6 +41,10 @@ global_variable HGLRC RenderingContext;
 global_variable RECT WindowsWorkArea; // Needed because WS_POPUP by default maximizes to cover task bar
 
 // =================================================================================================
+struct PapayaMemory* Platform::GetMem() {
+	return &Mem;
+}
+
 
 void Platform::Print(char* Message)
 {

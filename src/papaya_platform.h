@@ -1,5 +1,7 @@
 #pragma once
 
+struct PapayaMemory;
+
 namespace Platform
 {
     void Print(char* Message);
@@ -10,5 +12,7 @@ namespace Platform
     char* OpenFileDialog();
     char* SaveFileDialog();
 
-    int64 GetMilliseconds();
+	int64 GetMilliseconds();
+
+	PapayaMemory* GetMem();
 }
