@@ -19,12 +19,13 @@ workspace "Papaya"
   
    -- imgui sample_gl3
    project "Papaya"
-      kind "WindowedApp"
-      location (BUILD_DIR .. "/Papaya")
+      kind ("WindowedApp")
+      location (BUILD_DIR)
       language "C++"
       targetdir (BUILD_DIR .. "/%{cfg.buildcfg}")
       links {"glfw", "glew"}
       defines { "GLEW_STATIC" }
+      flags{ 'Unicode', 'WinMain' }
 
       files { 
          "./src/*.h", 

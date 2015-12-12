@@ -20,7 +20,7 @@ global_variable RECT WindowsWorkArea; // Needed because WS_POPUP by default maxi
 // =================================================================================================
 void Platform::Print(char* Message)
 {
-    OutputDebugString((LPCSTR)Message);
+    OutputDebugStringA((LPCSTR)Message);
 }
 
 void Platform::StartMouseCapture()
@@ -308,7 +308,7 @@ int CALLBACK WinMain(HINSTANCE Instance, HINSTANCE PrevInstance, LPSTR CommandLi
         WindowClass.lpfnWndProc = Win32MainWindowCallback;
         WindowClass.hInstance = Instance;
         // TODO: Add an icon
-        WindowClass.hIcon = (HICON)LoadImage(0, "../../img/papaya.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE | LR_DEFAULTSIZE | LR_SHARED);
+        WindowClass.hIcon = (HICON)LoadImageA(0, "../../img/papaya.ico", IMAGE_ICON, 0, 0, LR_LOADFROMFILE | LR_DEFAULTSIZE | LR_SHARED);
         WindowClass.lpszClassName = "PapayaWindowClass";
 
         if (!RegisterClassA(&WindowClass))
