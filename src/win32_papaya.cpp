@@ -649,7 +649,7 @@ FILE* Platform::openFile(const char* filename, const char* flags) {
 	wchar_t *buffFlags = (wchar_t *)malloc(sizeof(wchar_t)*requiredSizeFlags);
 	
 	const int resFilename = MultiByteToWideChar(CP_UTF8, 0, filename, -1, buffFilename, requiredSizeFilename);
-	const int resFlags = MultiByteToWideChar(CP_UTF8, 0, filename, -1, buffFlags, requiredSizeFlags);
+	const int resFlags = MultiByteToWideChar(CP_UTF8, 0, flags, -1, buffFlags, requiredSizeFlags);
 
 	FILE* file = NULL;
 	if (resFilename > 0 && resFilename > 0) {

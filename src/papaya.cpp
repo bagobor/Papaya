@@ -808,6 +808,34 @@ void Shutdown(PapayaMemory* Mem)
     //TODO: Free stuff
 }
 
+bool SaveImage(const char* Path, uint32 Width, uint32 Height, uint32 TextureID) {
+
+	if (!Path || TextureID<= 0 || Width==0 || Height==0) return false;
+
+	uint8* Texture = (uint8*)malloc(4 * Width * Height);
+
+	glFinish();
+	glBindTexture(GL_TEXTURE_2D, TextureID);
+	glGetTexImage(GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE, Texture);
+	glFinish();
+
+	int32 Result = 0;
+	FILE *file = Platform::openFile(Path, "wb");
+	if (file) {
+		int len = 0;
+		unsigned char *png = stbi_write_png_to_mem((unsigned char *)Texture, 4 * Width, Width, Height, 4, &len);
+		if (png != NULL) {
+			fwrite(png, 1, len, file);
+			Result = 1;
+		}
+		fclose(file);
+		STBIW_FREE(png);
+	}
+
+	free(Texture);
+	return Result > 0;
+}
+
 void UpdateAndRender(PapayaMemory* Mem)
 {
     // Initialize frame
@@ -917,25 +945,18 @@ void UpdateAndRender(PapayaMemory* Mem)
 
                 if (ImGui::MenuItem("Save", "Ctrl+S"))
                 {
+					//TODO: do not show file dialog on Save (use filename from open)
                     char* Path = Platform::SaveFileDialog();
-                    uint8* Texture = (uint8*)malloc(4 * Mem->Doc.Width * Mem->Doc.Height);
-                    if (Path) // TODO: Do this on a separate thread. Massively blocks UI for large images.
-                    {
-                        glFinish();
-                        glBindTexture(GL_TEXTURE_2D, Mem->Doc.TextureID);
-                        glGetTexImage(GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE, Texture);
-                        glFinish();
+					
+					// TODO: Do this on a separate thread. Massively blocks UI for large images.
+					if (!SaveImage(Path, Mem->Doc.Width, Mem->Doc.Height, Mem->Doc.TextureID)) {
+						// TODO: Log: Save failed
+						Platform::Print("Save failed\n");
+					}
 
-                        int32 Result = stbi_write_png(Path, Mem->Doc.Width, Mem->Doc.Height, 4, Texture, 4 * Mem->Doc.Width);
-                        if (!Result)
-                        {
-                            // TODO: Log: Save failed
-                            Platform::Print("Save failed\n");
-                        }
-
-                        free(Texture);
-                        free(Path);
-                    }
+					if (Path) {
+						free(Path);
+					}
                 }
                 if (ImGui::MenuItem("Save As..")) {}
                 ImGui::Separator();
