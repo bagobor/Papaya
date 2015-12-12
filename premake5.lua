@@ -1,5 +1,5 @@
 -- premake.lua - public domain
-local BUILD_DIR = (".build/" .. _ACTION)
+local BUILD_DIR = ("build/" .. _ACTION)
 
 workspace "Papaya"
    configurations { "Debug", "Release" }
