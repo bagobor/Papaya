@@ -1,0 +1,56 @@
+
+
+#include <stdint.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#define internal static
+#define local_persist static
+#define global_variable static
+
+typedef int8_t int8;
+typedef int16_t int16;
+typedef int32_t int32;
+typedef int64_t int64;
+typedef int32 bool32;
+
+typedef uint8_t uint8;
+typedef uint16_t uint16;
+typedef uint32_t uint32;
+typedef uint64_t uint64;
+
+typedef float real32;
+typedef double real64;
+
+#include "papaya.h"
+
+#include "papaya_platform.h"
+
+#define EASYTAB_IMPLEMENTATION
+#include "easytab/easytab.h"
+
+#include "nfd.h"
+
+#include "wtf8/wtf8.h"
+
+PapayaMemory Mem = {0};
+
+struct PapayaMemory* Platform::GetMem() 
+{
+	return &Mem;
+}
+
+const char supported_file_extensions[] = "png,jpg,jpeg";
+
+char* Platform::OpenFileDialog() {
+	nfdchar_t *outPath = NULL;
+    nfdresult_t result = NFD_OpenDialog(supported_file_extensions, NULL, &outPath );    
+    return (char*)outPath;
+}
+
+char* Platform::SaveFileDialog() {
+	nfdchar_t *savePath = NULL;
+    nfdresult_t result = NFD_SaveDialog(supported_file_extensions, NULL, &savePath );
+    return (char*)savePath;
+}
