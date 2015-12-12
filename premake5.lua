@@ -9,12 +9,12 @@ workspace "Papaya"
 
    filter "configurations:Debug"
       defines { "DEBUG" }
-      flags { "Symbols" }
+      flags { "Symbols", "MultiProcessorCompile" }
 
    filter "configurations:Release"
       defines { "NDEBUG" }
       optimize "On"
-      flags { "Optimize" }
+      flags { "Optimize", "MultiProcessorCompile" }
 
   
    -- imgui sample_gl3
@@ -28,6 +28,7 @@ workspace "Papaya"
       flags{ 'Unicode', 'WinMain' }
 
       files { 
+         -- "./src/papaya.cpp", 
          "./src/*.h", 
          "./src/*.impl",
          "./ext/imgui/*.cpp",
@@ -44,6 +45,13 @@ workspace "Papaya"
          "./ext/glew/include/",
          "./ext/glfw/include/"
       }
+
+      filter "files:**.png"
+         buildaction "Embed"
+
+      excludes "./src/papaya.cpp"
+      -- filter "files:papaya.cpp"
+      --    flags {"ExcludeFromBuild"}
 
       configuration {"linux"}
          files {"./src/linux*.cpp", "./ext/nativefiledialog/src/nfd_gtk.c"}
@@ -76,7 +84,8 @@ workspace "Papaya"
          "./ext/glfw/src/window.c",
          "./ext/glfw/src/input.c",
          "./ext/glfw/src/init.c",
-         "./ext/glfw/src/context.c"
+         "./ext/glfw/src/context.c",
+         "./ext/glfw/src/monitor.c"
       }
       includedirs { "./ext/glfw/include", "./ext/glfw/src"}
       defines {"_GLFW_USE_OPENGL"}
