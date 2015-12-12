@@ -32,8 +32,6 @@ typedef double real64;
 
 #include "nfd.h"
 
-#include "wtf8/wtf8.h"
-
 PapayaMemory Mem = {0};
 
 struct PapayaMemory* Platform::GetMem() 
