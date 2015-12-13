@@ -5,7 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define internal static
+//#undef internal
+//#define internal static
 #define local_persist static
 #define global_variable static
 
@@ -43,7 +44,7 @@ const char supported_file_extensions[] = "png,jpg,jpeg";
 
 char* Platform::OpenFileDialog() {
 	nfdchar_t *outPath = NULL;
-    nfdresult_t result = NFD_OpenDialog(supported_file_extensions, NULL, &outPath );    
+    nfdresult_t result = NFD_OpenDialog(supported_file_extensions, NULL, &outPath );
     return (char*)outPath;
 }
 

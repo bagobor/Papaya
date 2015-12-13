@@ -10,13 +10,13 @@ namespace Util
     {
         int32 i = Timer;
         Mem->Debug.Timers[i].StartMilliseconds = Platform::GetMilliseconds();
-        Mem->Debug.Timers[i].StartCycleCount = __rdtsc();
+//        Mem->Debug.Timers[i].StartCycleCount = __rdtsc();
     }
 
     void StopTime(Timer_ Timer, PapayaMemory* Mem)
     {
         int32 i = Timer;
-        Mem->Debug.Timers[i].StopCycleCount = __rdtsc();
+//        Mem->Debug.Timers[i].StopCycleCount = __rdtsc();
         Mem->Debug.Timers[i].StopMilliseconds = Platform::GetMilliseconds();
         Mem->Debug.Timers[i].CyclesElapsed = Mem->Debug.Timers[i].StopCycleCount - Mem->Debug.Timers[i].StartCycleCount;
         Mem->Debug.Timers[i].MillisecondsElapsed = (double)(Mem->Debug.Timers[i].StopMilliseconds - Mem->Debug.Timers[i].StartMilliseconds) *

@@ -14,7 +14,7 @@
 namespace Papaya
 {
 
-internal uint32 AllocateEmptyTexture(int32 Width, int32 Height)
+ uint32 AllocateEmptyTexture(int32 Width, int32 Height)
 {
     uint32 Tex;
     glGenTextures  (1, &Tex);
@@ -25,7 +25,7 @@ internal uint32 AllocateEmptyTexture(int32 Width, int32 Height)
     return Tex;
 }
 
-internal uint32 LoadAndBindImage(char* Path)
+ uint32 LoadAndBindImage(char* Path)
 {
     uint8* Image;
     int32 ImageWidth, ImageHeight, ComponentsPerPixel;
@@ -44,7 +44,7 @@ internal uint32 LoadAndBindImage(char* Path)
     return (uint32)Id_GLuint;
 }
 
-internal void InitMesh(MeshInfo& Mesh, ShaderInfo Shader, Vec2 Pos, Vec2 Size, GLenum Usage)
+ void InitMesh(MeshInfo& Mesh, ShaderInfo Shader, Vec2 Pos, Vec2 Size, GLenum Usage)
 {
     glGenBuffers     (1, &Mesh.VboHandle);
     glBindBuffer     (GL_ARRAY_BUFFER, Mesh.VboHandle);
@@ -72,7 +72,7 @@ internal void InitMesh(MeshInfo& Mesh, ShaderInfo Shader, Vec2 Pos, Vec2 Size, G
     glBufferData(GL_ARRAY_BUFFER, sizeof(Verts), Verts, Usage);
 }
 
-internal void PushUndo(PapayaMemory* Mem)
+ void PushUndo(PapayaMemory* Mem)
 {
     if (Mem->Doc.Undo.Top == 0) // Buffer is empty
     {
@@ -178,7 +178,7 @@ internal void PushUndo(PapayaMemory* Mem)
     Mem->Doc.Undo.CurrentIndex++;
 }
 
-internal bool OpenDocument(char* Path, PapayaMemory* Mem)
+ bool OpenDocument(char* Path, PapayaMemory* Mem)
 {
 	if (!Path) return false;
 
@@ -277,7 +277,7 @@ internal bool OpenDocument(char* Path, PapayaMemory* Mem)
     return true;
 }
 
-internal void CloseDocument(PapayaMemory* Mem)
+ void CloseDocument(PapayaMemory* Mem)
 {
     // Document
     if (Mem->Doc.TextureID)
@@ -341,7 +341,7 @@ internal void CloseDocument(PapayaMemory* Mem)
     }
 }
 
-internal void CompileShader(ShaderInfo& Shader, const char* Vert, const char* Frag, int32 AttribCount, int32 UniformCount, ...)
+ void CompileShader(ShaderInfo& Shader, const char* Vert, const char* Frag, int32 AttribCount, int32 UniformCount, ...)
 {
     Shader.Handle     = glCreateProgram();
     uint32 VertHandle = glCreateShader(GL_VERTEX_SHADER);

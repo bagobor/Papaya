@@ -70,7 +70,7 @@ workspace "Papaya"
          links {"glu32","opengl32", "gdi32", "winmm", "user32"}
 
       configuration { "macosx" }
-         linkoptions { "-framework OpenGL", "-framework Cocoa", "-framework IOKit" }
+         linkoptions { "-framework OpenGL", "-framework Cocoa", "-framework IOKit", "-framework CoreVideo" }
 
    -- GLFW Library
    project "glfw"
@@ -119,14 +119,15 @@ workspace "Papaya"
        
       configuration {"Macosx"}
          files { 
-            "./ext/glfw/src/cocoa_*.m", 
-            "./ext/glfw/src/posix*.c", 
+            "./ext/glfw/src/mach_time.c",
+            "./ext/glfw/src/posix_tls.c",
+            "./ext/glfw/src/cocoa_*.m",
             "./ext/glfw/src/nsgl_*.m",
             "./ext/glfw/src/iokit_joystick.m"
          }
-         defines { "_GLFW_COCOA" }         
+         defines { "_GLFW_COCOA", "_GLFW_NSGL" }         
          buildoptions { " -fno-common" }
-         linkoptions { "-framework OpenGL", "-framework Cocoa", "-framework IOKit" }
+         linkoptions { "-framework OpenGL", "-framework Cocoa", "-framework IOKit", "-framework CoreVideo" }
 
       configuration "Debug"
          defines { "DEBUG" }
@@ -142,7 +143,7 @@ workspace "Papaya"
       location (BUILD_DIR .. "/glew")
       kind "StaticLib"
       language "C"
-      includedirs {"./ext/glew/include/"}
+      includedirs {"./ext/glew/include"}
       files {"./ext/glew/src/glew.c"}
       defines { "GLEW_STATIC" }
 
