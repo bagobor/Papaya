@@ -16,12 +16,15 @@
 #define GLFW_EXPOSE_NATIVE_NSGL
 #include "GLFW/glfw3native.h"
 
+GLFWwindow* window = NULL;
+
 // =================================================================================================
 //global_variable RECT WindowsWorkArea; // Needed because WS_POPUP by default maximizes to cover task bar
 
 // =================================================================================================
 void Platform::Print(char* Message)
 {
+//    printf(Message);
 //    OutputDebugStringA((LPCSTR)Message);
 }
 
@@ -37,22 +40,19 @@ void Platform::ReleaseMouseCapture()
 
 void Platform::SetMousePosition(Vec2 Pos)
 {
-//    RECT Rect;
+    glfwSetCursorPos(window, Pos.x, Pos.y);
 //    GetWindowRect(GetActiveWindow(), &Rect);
 //    SetCursorPos(Rect.left + (int32)Pos.x, Rect.top + (int32)Pos.y);
 }
 
 void Platform::SetCursorVisibility(bool Visible)
 {
-//    ShowCursor(Visible);
+    glfwSetInputMode(window, GLFW_CURSOR, Visible ? GLFW_CURSOR_NORMAL : GLFW_CURSOR_HIDDEN);
 }
 
 int64 Platform::GetMilliseconds()
 {
 	return (int64)glfwGetTime()*1000.0;
-//    LARGE_INTEGER ms;
-//    QueryPerformanceCounter(&ms);
-//    return ms.QuadPart;
 }
 
 void GlfwMouseButtonCallback(GLFWwindow*, int button, int action, int /*mods*/)
@@ -88,15 +88,14 @@ void GlfwCharCallback(GLFWwindow*, unsigned int c)
 }
 
 
-
-//int CALLBACK WinMain(HINSTANCE Instance, HINSTANCE PrevInstance, LPSTR CommandLine, int ShowCode)
 int main()
 {
 	if (!glfwInit())
 		exit(EXIT_FAILURE);
-
-//    QueryPerformanceFrequency((LARGE_INTEGER *)&Mem.Debug.TicksPerSecond);
-//    QueryPerformanceCounter((LARGE_INTEGER *)&Mem.Debug.Time);
+    
+    Mem.Debug.TicksPerSecond= 1000;
+    Mem.Debug.Time = glfwGetTime();
+    
     Util::StartTime(Timer_Startup, &Mem);
 
     Mem.IsRunning = true;
@@ -116,17 +115,17 @@ int main()
 
     //HWND Window;
     // Create Window
-	glfwWindowHint(GLFW_FOCUSED, GL_TRUE);
+//	glfwWindowHint(GLFW_FOCUSED, GL_TRUE);
 //	glfwWindowHint(GLFW_DECORATED, GL_FALSE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
-	//glfwWindowHint(GLFW_AUTO_ICONIFY, 1);	
+	//glfwWindowHint(GLFW_AUTO_ICONIFY, 1);
+    
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	
-	GLFWwindow* window = glfwCreateWindow(Mem.Window.Height, Mem.Window.Width, "Papaya", NULL, NULL);
-//	glfwSetWindowUserPointer(window, &WinProcExtent);
-
-//	HWND Window = glfwGetWin32Window(window);
-//	SetWindowPos(Window, HWND_TOP, WindowX, WindowY, Mem.Window.Width, Mem.Window.Height, NULL);
-	//SetWindowPos(Window, HWND_TOP, 0, 0, 1280, 720, NULL);
+	window = glfwCreateWindow(800, 600, "Papaya", NULL, NULL);
 
     glfwSetWindowPos(window, WindowX, WindowY);
     glfwSetWindowSize(window, Mem.Window.Width, Mem.Window.Height);
@@ -161,8 +160,17 @@ int main()
     //    exit(1);
     //}
 
+    int  minor = -1;
+    int major = -1;
+    
+    major = glfwGetWindowAttrib(window, GLFW_CONTEXT_VERSION_MAJOR);// >= 2 ||
+    minor = glfwGetWindowAttrib(window, GLFW_CONTEXT_VERSION_MINOR);// >= 3)
+    
     glGetIntegerv(GL_MAJOR_VERSION, &Mem.System.OpenGLVersion[0]);
     glGetIntegerv(GL_MINOR_VERSION, &Mem.System.OpenGLVersion[1]);
+    
+    glGetIntegerv(GL_MAJOR_VERSION, &major);
+    glGetIntegerv(GL_MINOR_VERSION, &minor);
 
    // Disable vsync
 	glfwSwapInterval(0);
@@ -178,17 +186,18 @@ int main()
     // Initialize ImGui
     {
         ImGuiIO& io = ImGui::GetIO();
-//        io.KeyMap[ImGuiKey_Tab] = VK_TAB;          // Keyboard mapping. ImGui will use those indices to peek into the io.KeyDown[] array that we will update during the application lifetime.
-//        io.KeyMap[ImGuiKey_LeftArrow] = VK_LEFT;
-//        io.KeyMap[ImGuiKey_RightArrow] = VK_RIGHT;
-//        io.KeyMap[ImGuiKey_UpArrow] = VK_UP;
-//        io.KeyMap[ImGuiKey_DownArrow] = VK_DOWN;
-//        io.KeyMap[ImGuiKey_Home] = VK_HOME;
-//        io.KeyMap[ImGuiKey_End] = VK_END;
-//        io.KeyMap[ImGuiKey_Delete] = VK_DELETE;
-//        io.KeyMap[ImGuiKey_Backspace] = VK_BACK;
-//        io.KeyMap[ImGuiKey_Enter] = VK_RETURN;
-//        io.KeyMap[ImGuiKey_Escape] = VK_ESCAPE;
+        
+        io.KeyMap[ImGuiKey_Tab] = GLFW_KEY_TAB;          // Keyboard mapping. ImGui will use those indices to peek into the io.KeyDown[] array that we will update during the application lifetime.
+        io.KeyMap[ImGuiKey_LeftArrow] = GLFW_KEY_LEFT;
+        io.KeyMap[ImGuiKey_RightArrow] = GLFW_KEY_RIGHT;
+        io.KeyMap[ImGuiKey_UpArrow] = GLFW_KEY_UP;
+        io.KeyMap[ImGuiKey_DownArrow] = GLFW_KEY_DOWN;
+        io.KeyMap[ImGuiKey_Home] = GLFW_KEY_HOME;
+        io.KeyMap[ImGuiKey_End] = GLFW_KEY_END;
+        io.KeyMap[ImGuiKey_Delete] = GLFW_KEY_DELETE;
+        io.KeyMap[ImGuiKey_Backspace] = GLFW_KEY_BACKSPACE;
+        io.KeyMap[ImGuiKey_Enter] = GLFW_KEY_ENTER;
+        io.KeyMap[ImGuiKey_Escape] = GLFW_KEY_ESCAPE;
         io.KeyMap[ImGuiKey_A] = 'A';
         io.KeyMap[ImGuiKey_C] = 'C';
         io.KeyMap[ImGuiKey_V] = 'V';
@@ -225,6 +234,7 @@ int main()
         Util::StartTime(Timer_Frame, &Mem);
 
         // Tablet input // TODO: Put this in papaya.cpp
+        if (EasyTab)
         {
             Mem.Tablet.Pressure = EasyTab->Pressure;
             Mem.Tablet.PosX = EasyTab->PosX;
@@ -237,12 +247,12 @@ int main()
 //        // Start new ImGui frame
         {
             ImGuiIO& io = ImGui::GetIO();
+            int width, height;
+            glfwGetWindowSize(window,&width, &height);//, <#int *width#>, <#int *height#>)
 //
 //            // Setup display size (every frame to accommodate for window resizing)
-//            RECT rect;
-//            GetClientRect(Window, &rect);
-//            io.DisplaySize = ImVec2((float)(rect.right - rect.left), (float)(rect.bottom - rect.top));
-//			io.DisplayFramebufferScale = ImVec2(1, 1);
+            io.DisplaySize = ImVec2(width, height);
+			io.DisplayFramebufferScale = ImVec2(1, 1);
 //
 //            // Read keyboard modifiers inputs
 //            io.KeyCtrl = (GetKeyState(VK_CONTROL) & 0x8000) != 0;
@@ -250,9 +260,7 @@ int main()
 //            io.KeyAlt = (GetKeyState(VK_MENU) & 0x8000) != 0;
 //
 //            // Setup time step
-//            INT64 current_time;
-//            QueryPerformanceCounter((LARGE_INTEGER *)&current_time);
-            unsigned int current_time = 16;//Platform::Get
+            double current_time = Platform::GetMilliseconds();
             io.DeltaTime = (float)(current_time - Mem.Debug.Time) / Mem.Debug.TicksPerSecond;
             Mem.Debug.Time = current_time; // TODO: Move Imgui timers from Debug to their own struct
 

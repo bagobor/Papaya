@@ -69,8 +69,14 @@ workspace "Papaya"
       configuration { "windows" }
          links {"glu32","opengl32", "gdi32", "winmm", "user32"}
 
-      configuration { "macosx" }
-         linkoptions { "-framework OpenGL", "-framework Cocoa", "-framework IOKit", "-framework CoreVideo" }
+      configuration { "Macosx" }
+         linkoptions { 
+         "-framework OpenGL", 
+         "-framework Cocoa", 
+         "-framework IOKit",
+         "-framework Carbon", 
+         "-framework CoreVideo"
+       }
 
    -- GLFW Library
    project "glfw"
@@ -119,15 +125,26 @@ workspace "Papaya"
        
       configuration {"Macosx"}
          files { 
-            "./ext/glfw/src/mach_time.c",
+            "./ext/glfw/src/cocoa*.c",
             "./ext/glfw/src/posix_tls.c",
-            "./ext/glfw/src/cocoa_*.m",
-            "./ext/glfw/src/nsgl_*.m",
-            "./ext/glfw/src/iokit_joystick.m"
+            "./ext/glfw/src/mach_time.c",
+            "./ext/glfw/src/*.m",
          }
-         defines { "_GLFW_COCOA", "_GLFW_NSGL" }         
+         defines { 
+               "_GLFW_COCOA", 
+               "_GLFW_NSGL", 
+               "_GLFW_USE_CHDIR",
+               "_GLFW_USE_MENUBAR", 
+               "_GLFW_USE_OPENGL", 
+               "_GLFW_USE_RETINA"
+           }
          buildoptions { " -fno-common" }
-         linkoptions { "-framework OpenGL", "-framework Cocoa", "-framework IOKit", "-framework CoreVideo" }
+         linkoptions { 
+            "-framework OpenGL", 
+            "-framework Cocoa", 
+            "-framework IOKit", 
+            "-framework CoreVideo",
+            "-framework Carbon" }
 
       configuration "Debug"
          defines { "DEBUG" }

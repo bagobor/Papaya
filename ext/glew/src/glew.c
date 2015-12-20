@@ -9748,8 +9748,9 @@ GLenum GLEWAPIENTRY glewContextInit (GLEW_CONTEXT_ARG_DEF_LIST)
   if (glewExperimental || GLEW_ARB_framebuffer_no_attachments) GLEW_ARB_framebuffer_no_attachments = !_glewInit_GL_ARB_framebuffer_no_attachments(GLEW_CONTEXT_ARG_VAR_INIT);
 #endif /* GL_ARB_framebuffer_no_attachments */
 #ifdef GL_ARB_framebuffer_object
-  GLEW_ARB_framebuffer_object = _glewSearchExtension("GL_ARB_framebuffer_object", extStart, extEnd);
-  if (glewExperimental || GLEW_ARB_framebuffer_object) GLEW_ARB_framebuffer_object = !_glewInit_GL_ARB_framebuffer_object(GLEW_CONTEXT_ARG_VAR_INIT);
+//  GLEW_ARB_framebuffer_object = _glewSearchExtension("GL_ARB_framebuffer_object", extStart, extEnd);
+//  if (glewExperimental || GLEW_ARB_framebuffer_object)
+  GLEW_ARB_framebuffer_object = !_glewInit_GL_ARB_framebuffer_object(GLEW_CONTEXT_ARG_VAR_INIT);
 #endif /* GL_ARB_framebuffer_object */
 #ifdef GL_ARB_framebuffer_sRGB
   GLEW_ARB_framebuffer_sRGB = _glewSearchExtension("GL_ARB_framebuffer_sRGB", extStart, extEnd);
@@ -10139,8 +10140,9 @@ GLenum GLEWAPIENTRY glewContextInit (GLEW_CONTEXT_ARG_DEF_LIST)
   GLEW_ARB_vertex_array_bgra = _glewSearchExtension("GL_ARB_vertex_array_bgra", extStart, extEnd);
 #endif /* GL_ARB_vertex_array_bgra */
 #ifdef GL_ARB_vertex_array_object
-  GLEW_ARB_vertex_array_object = _glewSearchExtension("GL_ARB_vertex_array_object", extStart, extEnd);
-  if (glewExperimental || GLEW_ARB_vertex_array_object) GLEW_ARB_vertex_array_object = !_glewInit_GL_ARB_vertex_array_object(GLEW_CONTEXT_ARG_VAR_INIT);
+//  GLEW_ARB_vertex_array_object = _glewSearchExtension("GL_ARB_vertex_array_object", extStart, extEnd);
+//  if (glewExperimental || GLEW_ARB_vertex_array_object)
+      GLEW_ARB_vertex_array_object = !_glewInit_GL_ARB_vertex_array_object(GLEW_CONTEXT_ARG_VAR_INIT);
 #endif /* GL_ARB_vertex_array_object */
 #ifdef GL_ARB_vertex_attrib_64bit
   GLEW_ARB_vertex_attrib_64bit = _glewSearchExtension("GL_ARB_vertex_attrib_64bit", extStart, extEnd);

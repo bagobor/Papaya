@@ -64,6 +64,7 @@ int _glfwCreateContext(_GLFWwindow* window,
                        const _GLFWfbconfig* fbconfig)
 {
     unsigned int attributeCount = 0;
+//    int iiiii = 5;
 
     if (ctxconfig->api == GLFW_OPENGL_ES_API)
     {
@@ -203,12 +204,14 @@ int _glfwCreateContext(_GLFWwindow* window,
     //       framebuffer, so there's no need (and no way) to request it
 
     ADD_ATTR(0);
+    ADD_ATTR(0);
 
 #undef ADD_ATTR
 #undef ADD_ATTR2
 
+    NSOpenGLPixelFormat* format = [NSOpenGLPixelFormat alloc];
     window->nsgl.pixelFormat =
-        [[NSOpenGLPixelFormat alloc] initWithAttributes:attributes];
+        [format initWithAttributes:attributes];
     if (window->nsgl.pixelFormat == nil)
     {
         _glfwInputError(GLFW_FORMAT_UNAVAILABLE,

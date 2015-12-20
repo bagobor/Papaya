@@ -46,10 +46,12 @@ namespace Papaya
 
  void InitMesh(MeshInfo& Mesh, ShaderInfo Shader, Vec2 Pos, Vec2 Size, GLenum Usage)
 {
-    glGenBuffers     (1, &Mesh.VboHandle);
-    glBindBuffer     (GL_ARRAY_BUFFER, Mesh.VboHandle);
     glGenVertexArrays(1, &Mesh.VaoHandle);
+    glGenBuffers     (1, &Mesh.VboHandle);
     glBindVertexArray(Mesh.VaoHandle);
+    glBindBuffer     (GL_ARRAY_BUFFER, Mesh.VboHandle);
+    
+    
 
     glEnableVertexAttribArray(Shader.Attributes[0]); // Position attribute
     glEnableVertexAttribArray(Shader.Attributes[1]); // UV attribute
