@@ -556,6 +556,9 @@ void _glfwPlatformIconifyWindow(_GLFWwindow* window);
  */
 void _glfwPlatformRestoreWindow(_GLFWwindow* window);
 
+
+void _glfwPlatformMaximizeWindow(_GLFWwindow* window);
+
 /*! @copydoc glfwShowWindow
  *  @ingroup platform
  */

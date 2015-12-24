@@ -1,11 +1,4 @@
-//#include <windows.h>
-//#include <windowsx.h>
 #include <memory.h>
-//#include <commdlg.h>
-
-#undef GetWindowFont
-
-
 #include "papaya_platform_common.impl"
 
 #define PAPAYA_DEFAULT_IMAGE "C:\\Users\\Apoorva\\Pictures\\ImageTest\\test4k.jpg"
@@ -24,7 +17,7 @@ GLFWwindow* window = NULL;
 // =================================================================================================
 void Platform::Print(char* Message)
 {
-//    printf(Message);
+    printf(Message);
 //    OutputDebugStringA((LPCSTR)Message);
 }
 
@@ -41,8 +34,6 @@ void Platform::ReleaseMouseCapture()
 void Platform::SetMousePosition(Vec2 Pos)
 {
     glfwSetCursorPos(window, Pos.x, Pos.y);
-//    GetWindowRect(GetActiveWindow(), &Rect);
-//    SetCursorPos(Rect.left + (int32)Pos.x, Rect.top + (int32)Pos.y);
 }
 
 void Platform::SetCursorVisibility(bool Visible)
@@ -65,7 +56,7 @@ void GlfwMouseButtonCallback(GLFWwindow*, int button, int action, int /*mods*/)
 void GlfwScrollCallback(GLFWwindow*, double /*xoffset*/, double yoffset)
 {
 	ImGuiIO& io = ImGui::GetIO();
-	io.MouseWheel += (float)yoffset;//GET_WHEEL_DELTA_WPARAM(WParam) > 0 ? +1.0f : -1.0f;
+	io.MouseWheel += (float)yoffset;
 }
 
 
@@ -85,6 +76,10 @@ void GlfwCharCallback(GLFWwindow*, unsigned int c)
 	ImGuiIO& io = ImGui::GetIO();
 	if (c > 0 && c < 0x10000)
 		io.AddInputCharacter((unsigned short)c);
+}
+
+void GlfwDropCalback(GLFWwindow* window,int num,const char** paths) {
+    Papaya::OpenDocument(paths[0], &Mem);
 }
 
 
@@ -115,7 +110,7 @@ int main()
 
     //HWND Window;
     // Create Window
-//	glfwWindowHint(GLFW_FOCUSED, GL_TRUE);
+	glfwWindowHint(GLFW_FOCUSED, GL_TRUE);
 //	glfwWindowHint(GLFW_DECORATED, GL_FALSE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 	//glfwWindowHint(GLFW_AUTO_ICONIFY, 1);
@@ -214,7 +209,8 @@ int main()
 		glfwSetKeyCallback(window, GlfwKeyCallback);
 		glfwSetCharCallback(window, GlfwCharCallback);
     }
-
+    
+    glfwSetDropCallback(window, &GlfwDropCalback);
 
     Mem.Window.MenuHorizontalOffset = 32;
     Mem.Window.TitleBarButtonsWidth = 109;
@@ -226,8 +222,10 @@ int main()
 //    if (strlen(CommandLine)) { Papaya::OpenDocument(CommandLine, &Mem); }
 
 #ifdef PAPAYA_DEFAULT_IMAGE
-//    Papaya::OpenDocument(PAPAYA_DEFAULT_IMAGE, &Mem);
+    Papaya::OpenDocument(PAPAYA_DEFAULT_IMAGE, &Mem);
 #endif
+    
+    BOOL IsMaximized = FALSE;
 
     while (Mem.IsRunning && !glfwWindowShouldClose(window))
     {
@@ -241,25 +239,31 @@ int main()
             Mem.Tablet.PosY = EasyTab->PosY;
         }
 
-//        BOOL IsMaximized = IsMaximized(Window);
-////        if (IsIconic(Window)) { goto EndOfFrame; }
-//
-//        // Start new ImGui frame
+       if (glfwGetWindowAttrib(window, GLFW_ICONIFIED)) { goto EndOfFrame; }
+
+        // Start new ImGui frame
         {
             ImGuiIO& io = ImGui::GetIO();
             int width, height;
-            glfwGetWindowSize(window,&width, &height);//, <#int *width#>, <#int *height#>)
-//
-//            // Setup display size (every frame to accommodate for window resizing)
+            glfwGetWindowSize(window,&width, &height);
+            
+            glfwGetFramebufferSize(window,&Mem.Window.Width, &Mem.Window.Height);
+
+            // Setup display size (every frame to accommodate for window resizing)
             io.DisplaySize = ImVec2(width, height);
 			io.DisplayFramebufferScale = ImVec2(1, 1);
-//
-//            // Read keyboard modifiers inputs
-//            io.KeyCtrl = (GetKeyState(VK_CONTROL) & 0x8000) != 0;
-//            io.KeyShift = (GetKeyState(VK_SHIFT) & 0x8000) != 0;
-//            io.KeyAlt = (GetKeyState(VK_MENU) & 0x8000) != 0;
-//
-//            // Setup time step
+            
+            // Read keyboard modifiers inputs
+            io.KeyCtrl = (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) != GLFW_RELEASE) ||
+                         (glfwGetKey(window, GLFW_KEY_RIGHT_CONTROL) != GLFW_RELEASE);
+
+            io.KeyShift = (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) != GLFW_RELEASE) ||
+                         (glfwGetKey(window, GLFW_KEY_RIGHT_SHIFT) != GLFW_RELEASE);
+            
+            io.KeyAlt = (glfwGetKey(window, GLFW_KEY_LEFT_ALT) != GLFW_RELEASE) ||
+                        (glfwGetKey(window, GLFW_KEY_RIGHT_ALT) != GLFW_RELEASE);
+
+            // Setup time step
             double current_time = Platform::GetMilliseconds();
             io.DeltaTime = (float)(current_time - Mem.Debug.Time) / Mem.Debug.TicksPerSecond;
             Mem.Debug.Time = current_time; // TODO: Move Imgui timers from Debug to their own struct
@@ -276,7 +280,7 @@ int main()
 			}
 
             // Hide OS mouse cursor if ImGui is drawing it
-            //SetCursor(io.MouseDrawCursor ? NULL : LoadCursor(NULL, IDC_ARROW));
+            Platform::SetCursorVisibility(io.MouseDrawCursor);
 
             // Start the frame
             ImGui::NewFrame();
@@ -342,7 +346,7 @@ int main()
             ImGui::PushID(0);
             if(ImGui::ImageButton((void*)(size_t)Mem.Textures[PapayaTex_TitleBarButtons], ImVec2(34,26), ImVec2(0.5,0), ImVec2(1,0.5f), 1, ImVec4(0,0,0,0)))
             {
-//                ShowWindow(Window, SW_MINIMIZE);
+                glfwIconifyWindow(window);
             }
 
             bool IsMaximized = false;
@@ -355,14 +359,15 @@ int main()
 
             if(ImGui::ImageButton((void*)(size_t)Mem.Textures[PapayaTex_TitleBarButtons], ImVec2(34,26), StartUV, EndUV, 1, ImVec4(0,0,0,0)))
             {
-//                if (IsMaximized)
-//                {
-//                    ShowWindow(Window, SW_RESTORE);
-//                }
-//                else
-//                {
+                if (IsMaximized)
+                {
+                    glfwRestoreWindow(window);
+                }
+                else
+                {
+                    glfwMaximizeWindow(window);
 //                    ShowWindow(Window, SW_MAXIMIZE);
-//                }
+                }
             }
 
             ImGui::PopID();
@@ -371,8 +376,7 @@ int main()
 
             if(ImGui::ImageButton((void*)(size_t)Mem.Textures[PapayaTex_TitleBarButtons], ImVec2(34,26), ImVec2(0,0), ImVec2(0.5f,0.5f), 1, ImVec4(0,0,0,0)))
             {
-//                SendMessage(Window, WM_CLOSE, 0, 0);
-            }
+                glfwSetWindowShouldClose(window, GL_TRUE);            }
 
             ImGui::PopID();
 
@@ -410,10 +414,36 @@ int main()
 
 
 FILE* Platform::openFile(const char* filename, const char* flags) {
-	FILE* file = NULL;
-	if (filename && flags) {
-		file = fopen(filename, flags);
-	}
-
-	return file;
+    FILE* file = NULL;
+    
+    if (!filename || !flags)
+        return NULL;
+    
+    /* If the file mode is writable, skip all the bundle stuff because generally the bundle is read-only. */
+    if(strcmp("r", flags) && strcmp("rb", flags))
+    {
+        return fopen(filename, flags);
+    }
+    
+    NSAutoreleasePool* autorelease_pool = [[NSAutoreleasePool alloc] init];
+    
+    
+    NSFileManager* file_manager = [NSFileManager defaultManager];
+    NSString* resource_path = [[NSBundle mainBundle] resourcePath];
+    
+    NSString* ns_string_file_component = [file_manager stringWithFileSystemRepresentation:filename length:strlen(filename)];
+    
+    NSString* full_path_with_file_to_try = [resource_path stringByAppendingPathComponent:ns_string_file_component];
+    if([file_manager fileExistsAtPath:full_path_with_file_to_try])
+    {
+        file = fopen([full_path_with_file_to_try fileSystemRepresentation], flags);
+    }
+    else
+    {
+        file = fopen(filename, flags);
+    }
+    
+    [autorelease_pool drain];
+    
+    return file;
 }

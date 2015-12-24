@@ -27,9 +27,17 @@ namespace Papaya
 
  uint32 LoadAndBindImage(char* Path)
 {
-    uint8* Image;
+    uint8* Image = NULL;
     int32 ImageWidth, ImageHeight, ComponentsPerPixel;
-    Image = stbi_load(Path, &ImageWidth, &ImageHeight, &ComponentsPerPixel, 0);
+    
+    FILE *file = Platform::openFile(Path, "rb");
+    
+    // Load image
+    if (file)
+    {
+        Image = stbi_load_from_file(file, &ImageWidth, &ImageHeight, &ComponentsPerPixel, 0);
+        fclose(file);
+    }
 
     // Create texture
     GLuint Id_GLuint;
@@ -180,7 +188,7 @@ namespace Papaya
     Mem->Doc.Undo.CurrentIndex++;
 }
 
- bool OpenDocument(char* Path, PapayaMemory* Mem)
+ bool OpenDocument(const char* Path, PapayaMemory* Mem)
 {
 	if (!Path) return false;
 
@@ -778,9 +786,9 @@ void Initialize(PapayaMemory* Mem)
     // Load interface textures and colors
     {
         // Texture IDs
-        Mem->Textures[PapayaTex_TitleBarButtons] = LoadAndBindImage("../../img/win32_titlebar_buttons.png");
-        Mem->Textures[PapayaTex_TitleBarIcon]    = LoadAndBindImage("../../img/win32_titlebar_icon.png");
-        Mem->Textures[PapayaTex_InterfaceIcons]  = LoadAndBindImage("../../img/interface_icons.png");
+        Mem->Textures[PapayaTex_TitleBarButtons] = LoadAndBindImage("win32_titlebar_buttons.png");
+        Mem->Textures[PapayaTex_TitleBarIcon]    = LoadAndBindImage("win32_titlebar_icon.png");
+        Mem->Textures[PapayaTex_InterfaceIcons]  = LoadAndBindImage("interface_icons.png");
 
         // Colors
 #if 1

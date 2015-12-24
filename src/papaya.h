@@ -101,7 +101,7 @@ struct SystemInfo
 
 struct WindowInfo
 {
-    uint32 Width, Height;
+    int Width, Height;
     uint32 MenuHorizontalOffset, TitleBarButtonsWidth, TitleBarHeight;
     float ProjMtx[4][4];
 };

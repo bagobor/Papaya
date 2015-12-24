@@ -1971,6 +1971,9 @@ GLFWAPI void glfwIconifyWindow(GLFWwindow* window);
  *  @ingroup window
  */
 GLFWAPI void glfwRestoreWindow(GLFWwindow* window);
+    
+    
+GLFWAPI void glfwMaximizeWindow(GLFWwindow* handle);
 
 /*! @brief Makes the specified window visible.
  *
