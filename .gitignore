@@ -199,3 +199,9 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+
+*.xcuserstate
+
+build/xcode4/Papaya.xcodeproj/xcuserdata/
+build/xcode4/glfw/glfw.xcodeproj/xcuserdata/
+build/xcode4/glew/glew.xcodeproj/xcuserdata/

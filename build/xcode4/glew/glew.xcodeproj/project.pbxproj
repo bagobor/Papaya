@@ -1,0 +1,209 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C9F56E057A5240025E594DD510B2400B22BD43244A68000 /* glew.c in Sources */ = {isa = PBXBuildFile; fileRef = C6CD22B89CB57800DB3B09BF4001000031CB86705AD1D000 /* glew.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A1EF60E2CEE6F8007970E5D9D257D0006864384A53C47400 /* libglew.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libglew.a; path = libglew.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6CD22B89CB57800DB3B09BF4001000031CB86705AD1D000 /* glew.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = glew.c; path = ../../../ext/glew/src/glew.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		24CF50517DE9B200393D375821353C008FCDB4093C060800 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4AEDC56FCF2AE400B548157C40719000908F78CDCE63D800 /* glew */ = {
+			isa = PBXGroup;
+			children = (
+				C6CD22B89CB57800DB3B09BF4001000031CB86705AD1D000 /* glew.c */,
+				DE2FD571A6C938008E134D4D9B3FB000BA17F9BDEA135000 /* Products */,
+			);
+			name = glew;
+			sourceTree = "<group>";
+		};
+		DE2FD571A6C938008E134D4D9B3FB000BA17F9BDEA135000 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1EF60E2CEE6F8007970E5D9D257D0006864384A53C47400 /* libglew.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		527C314E3EAFD0002A785C1F6D562400FB6875E4C6978000 /* glew */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24CF50506C24FA00393D37570F7084008FCDB4082A415000 /* Build configuration list for PBXNativeTarget "glew" */;
+			buildPhases = (
+				24CF5054EDD13200393D375B911CBC008FCDB40CABED8800 /* Resources */,
+				24CF5055577E4C00393D375BFAC9D6008FCDB40D159AA000 /* Sources */,
+				24CF50517DE9B200393D375821353C008FCDB4093C060800 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = glew;
+			productName = glew;
+			productReference = A1EF60E2CEE6F8007970E5D9D257D0006864384A53C47400 /* libglew.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "glew" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 4AEDC56FCF2AE400B548157C40719000908F78CDCE63D800 /* glew */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				527C314E3EAFD0002A785C1F6D562400FB6875E4C6978000 /* libglew.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		24CF5054EDD13200393D375B911CBC008FCDB40CABED8800 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		24CF5055577E4C00393D375BFAC9D6008FCDB40D159AA000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C9F56E057A5240025E594DD510B2400B22BD43244A68000 /* glew.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2048BECD83771E004E16DCBFABB1D8003146108C934D6400 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../lib/Release;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = glew;
+			};
+			name = Release;
+		};
+		2523DE0B7C697A00E2A7B349C4DA600073E827B309793000 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../lib/Debug;
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = glew;
+			};
+			name = Debug;
+		};
+		8757B3A6CE31F00034118B7206ECB200BFDB5DE69683E800 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					GLEW_STATIC,
+					DEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = obj/x32/Debug;
+				ONLY_ACTIVE_ARCH = YES;
+				SYMROOT = ../lib/Debug;
+				USER_HEADER_SEARCH_PATHS = (
+					../../../ext/glew/include,
+				);
+				WARNING_CFLAGS = "-Wall -Wextra";
+			};
+			name = Debug;
+		};
+		BC5F723916C5D0007EEE69B5694BF8002476AB8C3B905C00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					GLEW_STATIC,
+					NDEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = obj/x32/Release;
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = ../lib/Release;
+				USER_HEADER_SEARCH_PATHS = (
+					../../../ext/glew/include,
+				);
+				WARNING_CFLAGS = "-Wall -Wextra";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "glew" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8757B3A6CE31F00034118B7206ECB200BFDB5DE69683E800 /* Debug */,
+				8757B3A6CE31F00034118B7206ECB200BFDB5DE69683E800 /* Debug */,
+				BC5F723916C5D0007EEE69B5694BF8002476AB8C3B905C00 /* Release */,
+				BC5F723916C5D0007EEE69B5694BF8002476AB8C3B905C00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		24CF50506C24FA00393D37570F7084008FCDB4082A415000 /* Build configuration list for PBXNativeTarget "libglew.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2523DE0B7C697A00E2A7B349C4DA600073E827B309793000 /* Debug */,
+				2523DE0B7C697A00E2A7B349C4DA600073E827B309793000 /* Debug */,
+				2048BECD83771E004E16DCBFABB1D8003146108C934D6400 /* Release */,
+				2048BECD83771E004E16DCBFABB1D8003146108C934D6400 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

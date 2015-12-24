@@ -1,0 +1,418 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1AB8547B57C03D004CF04227C4E84C0099EB9419C67B3800 /* osx_papaya.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6C9434FF29CD800D09F507B3FFFC8009235C02CB61EC800 /* osx_papaya.cpp */; };
+		2178754576D91A00C3F0640686BE4800205614E77331D000 /* nfd_cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A64BAEA02BC66800E8F4C49BCDB00000B86F6D1CC4D71000 /* nfd_cocoa.m */; };
+		2203A9EDF79FA80064ACBFE9998944003427686A90B05600 /* imgui_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F70534A38AF3780033BE3C275916CA002AB496EAE0251C00 /* imgui_demo.cpp */; };
+		37A6CFCC0840B00089A9C4657B6240005F4FBA0BDC278000 /* libglfw.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A91AB12B0580006DA13E1D8665A8004DBDDF34C8A94800 /* libglfw.a */; };
+		8B75096AC3255000D31D8D860773F8008D05FCE1499B3000 /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 471CA1F7C667380020EA0514E832E4008CB55FBA24E81000 /* imgui.cpp */; };
+		D00167ABFB44900012AA7DA79D2E2A00E225262894554000 /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE549F488D8438001B0DA6CC5BA78F001204018FE2B5E200 /* imgui_draw.cpp */; };
+		F2134EF72BCE0800441643909EEF980019BC3936FFB4D800 /* libglew.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 811D64CFCB5918004815883C26B940002832295368FCE200 /* libglew.a */; };
+		F9E4C897606068001A136BDBFE416B0026A8D8A9D5BFB000 /* nfd_common.c in Sources */ = {isa = PBXBuildFile; fileRef = 55D78A8C9CEBDC00E71E0DF85FAC40007FE4DA93BCE11C00 /* nfd_common.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1058E107B17133001266DEA3D7976300277508973E9E5A00 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A550A38FD0F8800D9D56DB0D5C6E002407D08E0B493800 /* glew.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A1EF60E2CEE6F8007970E5D9D257D0006864384A53C47400;
+			remoteInfo = libglew.a;
+		};
+		12CB223E03ABA60014D91FDA29D1D50029E749CD90D8CC00 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A550A38FD0F8800D9D56DB0D5C6E002407D08E0B493800 /* glew.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 527C314E3EAFD0002A785C1F6D562400FB6875E4C6978000;
+			remoteInfo = libglew.a;
+		};
+		EF97B685340D3000F1A5B4215A3360006B3DE14C13A5880 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8FAD273DC672300012F573DFD6BF1100295FED92D4ABDA00 /* glfw.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CE13C3C77FC16000A59548BE8332380094889B2F049ED800;
+			remoteInfo = libglfw.a;
+		};
+		F209F7BB8647A800F417F557AC6DD8009261F4B1374CB00 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8FAD273DC672300012F573DFD6BF1100295FED92D4ABDA00 /* glfw.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A9C53552CC5F40052987E265B6C4800238897EBB4ADA000;
+			remoteInfo = libglfw.a;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1B0286626779910057BB8DE6359CE4004EB1E8A9BCAB3800 /* stb_truetype.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stb_truetype.h; path = ../../ext/imgui/stb_truetype.h; sourceTree = "<group>"; };
+		471CA1F7C667380020EA0514E832E4008CB55FBA24E81000 /* imgui.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui.cpp; path = ../../ext/imgui/imgui.cpp; sourceTree = "<group>"; };
+		4A63B5C5DE61B400CD1654B2A1CD78005922ED99E0711C00 /* imconfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imconfig.h; path = ../../ext/imgui/imconfig.h; sourceTree = "<group>"; };
+		55D78A8C9CEBDC00E71E0DF85FAC40007FE4DA93BCE11C00 /* nfd_common.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = nfd_common.c; path = ../../ext/nativefiledialog/src/nfd_common.c; sourceTree = "<group>"; };
+		69940320113FB400A64D0AA3DF6308009D43656766715800 /* papaya_platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = papaya_platform.h; path = ../../src/papaya_platform.h; sourceTree = "<group>"; };
+		8A550A38FD0F8800D9D56DB0D5C6E002407D08E0B493800 /* glew.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = glew.xcodeproj; path = glew/glew.xcodeproj; sourceTree = SOURCE_ROOT; };
+		8C7AEEB8288C1800A29455723F9EB000A6D485E92FBAA800 /* papaya.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = papaya.h; path = ../../src/papaya.h; sourceTree = "<group>"; };
+		8FAD273DC672300012F573DFD6BF1100295FED92D4ABDA00 /* glfw.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = glfw.xcodeproj; path = glfw/glfw.xcodeproj; sourceTree = SOURCE_ROOT; };
+		9851B511BA30F8006003D8E92BBC10002D617969DABD3600 /* Papaya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Papaya.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AD2E58037B8D8001D85846CFB249E00A9921D5439C84000 /* papaya_math.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = papaya_math.h; path = ../../src/papaya_math.h; sourceTree = "<group>"; };
+		A64BAEA02BC66800E8F4C49BCDB00000B86F6D1CC4D71000 /* nfd_cocoa.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = nfd_cocoa.m; path = ../../ext/nativefiledialog/src/nfd_cocoa.m; sourceTree = "<group>"; };
+		C9B45B31AE23C0004C66FA1E718F8000D8739305B0332800 /* papaya_util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = papaya_util.h; path = ../../src/papaya_util.h; sourceTree = "<group>"; };
+		D275914C14660000F2E98CFE2895100624F3936997A3C0 /* stb_textedit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stb_textedit.h; path = ../../ext/imgui/stb_textedit.h; sourceTree = "<group>"; };
+		D510F6C4E6B648002429EE74CAFD4C00B22208364EEA7800 /* stb_rect_pack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stb_rect_pack.h; path = ../../ext/imgui/stb_rect_pack.h; sourceTree = "<group>"; };
+		D6C9434FF29CD800D09F507B3FFFC8009235C02CB61EC800 /* osx_papaya.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = osx_papaya.cpp; path = ../../src/osx_papaya.cpp; sourceTree = "<group>"; };
+		DE549F488D8438001B0DA6CC5BA78F001204018FE2B5E200 /* imgui_draw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_draw.cpp; path = ../../ext/imgui/imgui_draw.cpp; sourceTree = "<group>"; };
+		E7B391180CCAF80060E934521EF4D8004D4EC48452E5C000 /* imgui_internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui_internal.h; path = ../../ext/imgui/imgui_internal.h; sourceTree = "<group>"; };
+		EF4C217131F90000ACCFF6AF7A69E0003E106B18BF08B400 /* imgui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui.h; path = ../../ext/imgui/imgui.h; sourceTree = "<group>"; };
+		F203B4FC52A0D00012325840F081D0001EC7C50EC8001500 /* papaya_platform_common.impl */ = {isa = PBXFileReference; lastKnownFileType = text; name = papaya_platform_common.impl; path = ../../src/papaya_platform_common.impl; sourceTree = "<group>"; };
+		F70534A38AF3780033BE3C275916CA002AB496EAE0251C00 /* imgui_demo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_demo.cpp; path = ../../ext/imgui/imgui_demo.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F3F28D33E77AB800961D550EF4376000BEBD67E36921D000 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37A6CFCC0840B00089A9C4657B6240005F4FBA0BDC278000 /* libglfw.a in Frameworks */,
+				F2134EF72BCE0800441643909EEF980019BC3936FFB4D800 /* libglew.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		14054D3A9AEACE00F72970433061900078EAA9F09EFDE400 /* nativefiledialog */ = {
+			isa = PBXGroup;
+			children = (
+				84F0BFA81CD910006C829BDF4C6AE000B598494927782000 /* src */,
+			);
+			name = nativefiledialog;
+			sourceTree = "<group>";
+		};
+		264A6A5E6BB6BE00FF90A85B651CC0008BD6E7B058B81800 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A6A91AB12B0580006DA13E1D8665A8004DBDDF34C8A94800 /* libglfw.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3153ADB9C200340018D770F66652D3005579DE59788B1C00 /* imgui */ = {
+			isa = PBXGroup;
+			children = (
+				4A63B5C5DE61B400CD1654B2A1CD78005922ED99E0711C00 /* imconfig.h */,
+				471CA1F7C667380020EA0514E832E4008CB55FBA24E81000 /* imgui.cpp */,
+				EF4C217131F90000ACCFF6AF7A69E0003E106B18BF08B400 /* imgui.h */,
+				F70534A38AF3780033BE3C275916CA002AB496EAE0251C00 /* imgui_demo.cpp */,
+				DE549F488D8438001B0DA6CC5BA78F001204018FE2B5E200 /* imgui_draw.cpp */,
+				E7B391180CCAF80060E934521EF4D8004D4EC48452E5C000 /* imgui_internal.h */,
+				D510F6C4E6B648002429EE74CAFD4C00B22208364EEA7800 /* stb_rect_pack.h */,
+				D275914C14660000F2E98CFE2895100624F3936997A3C0 /* stb_textedit.h */,
+				1B0286626779910057BB8DE6359CE4004EB1E8A9BCAB3800 /* stb_truetype.h */,
+			);
+			name = imgui;
+			sourceTree = "<group>";
+		};
+		5F30B71A0FD95C0095D195C4FBCA6800D5B31F844E020000 /* ext */ = {
+			isa = PBXGroup;
+			children = (
+				3153ADB9C200340018D770F66652D3005579DE59788B1C00 /* imgui */,
+				14054D3A9AEACE00F72970433061900078EAA9F09EFDE400 /* nativefiledialog */,
+			);
+			name = ext;
+			sourceTree = "<group>";
+		};
+		7C9DD843583DA80055E4164051A3A800E22A5595453F0800 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				811D64CFCB5918004815883C26B940002832295368FCE200 /* libglew.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84F0BFA81CD910006C829BDF4C6AE000B598494927782000 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				A64BAEA02BC66800E8F4C49BCDB00000B86F6D1CC4D71000 /* nfd_cocoa.m */,
+				55D78A8C9CEBDC00E71E0DF85FAC40007FE4DA93BCE11C00 /* nfd_common.c */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		8E1F9F995775D800C4C07E444366E0004A20803959E7A40 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				D6C9434FF29CD800D09F507B3FFFC8009235C02CB61EC800 /* osx_papaya.cpp */,
+				8C7AEEB8288C1800A29455723F9EB000A6D485E92FBAA800 /* papaya.h */,
+				9AD2E58037B8D8001D85846CFB249E00A9921D5439C84000 /* papaya_math.h */,
+				69940320113FB400A64D0AA3DF6308009D43656766715800 /* papaya_platform.h */,
+				F203B4FC52A0D00012325840F081D0001EC7C50EC8001500 /* papaya_platform_common.impl */,
+				C9B45B31AE23C0004C66FA1E718F8000D8739305B0332800 /* papaya_util.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		BD71081B2CA0B000279F8D090A4BB000F24D0AF5DDF03000 /* Papaya */ = {
+			isa = PBXGroup;
+			children = (
+				5F30B71A0FD95C0095D195C4FBCA6800D5B31F844E020000 /* ext */,
+				8E1F9F995775D800C4C07E444366E0004A20803959E7A40 /* src */,
+				DE2FD571A6C938008E134D4D9B3FB000BA17F9BDEA135000 /* Products */,
+				DE2FDC7F9D9690008E13545B920D0800BA1800CBE0E0A800 /* Projects */,
+			);
+			name = Papaya;
+			sourceTree = "<group>";
+		};
+		DE2FD571A6C938008E134D4D9B3FB000BA17F9BDEA135000 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9851B511BA30F8006003D8E92BBC10002D617969DABD3600 /* Papaya.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DE2FDC7F9D9690008E13545B920D0800BA1800CBE0E0A800 /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				8FAD273DC672300012F573DFD6BF1100295FED92D4ABDA00 /* glfw.xcodeproj */,
+				8A550A38FD0F8800D9D56DB0D5C6E002407D08E0B493800 /* glew.xcodeproj */,
+			);
+			name = Projects;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		142214D38BA28A00EBA399CA8F136000DA96EC3B10800000 /* Papaya */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3F28D32D5B60000961D550DE272A800BEBD67E2575D1800 /* Build configuration list for PBXNativeTarget "Papaya" */;
+			buildPhases = (
+				F3F28D3757623800961D5512641EE800BEBD67E6D9095000 /* Resources */,
+				F3F28D37C10F5000961D5512CDCC0000BEBD67E742B67000 /* Sources */,
+				F3F28D33E77AB800961D550EF4376000BEBD67E36921D000 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				265D6495596EFA00FFA3A29252D4F8008BE9E1E746705800 /* PBXTargetDependency */,
+				7CB0D27A45F5E40055F710773F5BE400E23D4FCC32F74000 /* PBXTargetDependency */,
+			);
+			name = Papaya;
+			productInstallPath = "$(HOME)/Applications";
+			productName = Papaya;
+			productReference = 9851B511BA30F8006003D8E92BBC10002D617969DABD3600 /* Papaya.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+			};
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "Papaya" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BD71081B2CA0B000279F8D090A4BB000F24D0AF5DDF03000 /* Papaya */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 7C9DD843583DA80055E4164051A3A800E22A5595453F0800 /* Products */;
+					ProjectRef = 8A550A38FD0F8800D9D56DB0D5C6E002407D08E0B493800 /* glew.xcodeproj */;
+				},
+				{
+					ProductGroup = 264A6A5E6BB6BE00FF90A85B651CC0008BD6E7B058B81800 /* Products */;
+					ProjectRef = 8FAD273DC672300012F573DFD6BF1100295FED92D4ABDA00 /* glfw.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				142214D38BA28A00EBA399CA8F136000DA96EC3B10800000 /* Papaya */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		811D64CFCB5918004815883C26B940002832295368FCE200 /* libglew.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libglew.a;
+			remoteRef = 1058E107B17133001266DEA3D7976300277508973E9E5A00 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A6A91AB12B0580006DA13E1D8665A8004DBDDF34C8A94800 /* libglfw.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libglfw.a;
+			remoteRef = EF97B685340D3000F1A5B4215A3360006B3DE14C13A5880 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F3F28D3757623800961D5512641EE800BEBD67E6D9095000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F3F28D37C10F5000961D5512CDCC0000BEBD67E742B67000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B75096AC3255000D31D8D860773F8008D05FCE1499B3000 /* imgui.cpp in Sources */,
+				2203A9EDF79FA80064ACBFE9998944003427686A90B05600 /* imgui_demo.cpp in Sources */,
+				D00167ABFB44900012AA7DA79D2E2A00E225262894554000 /* imgui_draw.cpp in Sources */,
+				2178754576D91A00C3F0640686BE4800205614E77331D000 /* nfd_cocoa.m in Sources */,
+				F9E4C897606068001A136BDBFE416B0026A8D8A9D5BFB000 /* nfd_common.c in Sources */,
+				1AB8547B57C03D004CF04227C4E84C0099EB9419C67B3800 /* osx_papaya.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		265D6495596EFA00FFA3A29252D4F8008BE9E1E746705800 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libglfw.a;
+			targetProxy = F209F7BB8647A800F417F557AC6DD8009261F4B1374CB00 /* PBXContainerItemProxy */;
+		};
+		7CB0D27A45F5E40055F710773F5BE400E23D4FCC32F74000 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libglew.a;
+			targetProxy = 12CB223E03ABA60014D91FDA29D1D50029E749CD90D8CC00 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		17885BD77FF5EE008586D8DED68358003ED5DA70AEFC6C00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = Debug;
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = "\"$(HOME)/Applications\"";
+				PRODUCT_NAME = Papaya;
+			};
+			name = Debug;
+		};
+		3DC3DFA89BEBA0002555BBDFCB7D6E006E6B6949A68AAC00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = Release;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = "\"$(HOME)/Applications\"";
+				PRODUCT_NAME = Papaya;
+			};
+			name = Release;
+		};
+		79B3EB4C3BAB20001BDEB3274867CE00447EC5FBBD523C00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					NDEBUG,
+					GLEW_STATIC,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = obj/x32/Release;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-framework",
+					OpenGL,
+					"-framework",
+					Cocoa,
+					"-framework",
+					IOKit,
+					"-framework",
+					Carbon,
+					"-framework",
+					CoreVideo,
+				);
+				SYMROOT = Release;
+				USER_HEADER_SEARCH_PATHS = "../../ext ../../ext/stb ../../ext/nativefiledialog/src/include ../../ext/imgui ../../ext/easytab ../../ext/glew/include ../../ext/glfw/include";
+			};
+			name = Release;
+		};
+		F54C42B0B2413000B7DB3A2D04C758005D637C03D70BBC00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DEBUG,
+					GLEW_STATIC,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = obj/x32/Debug;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-framework",
+					OpenGL,
+					"-framework",
+					Cocoa,
+					"-framework",
+					IOKit,
+					"-framework",
+					Carbon,
+					"-framework",
+					CoreVideo,
+				);
+				SYMROOT = Debug;
+				USER_HEADER_SEARCH_PATHS = "../../ext ../../ext/stb ../../ext/nativefiledialog/src/include ../../ext/imgui ../../ext/easytab ../../ext/glew/include ../../ext/glfw/include";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "Papaya" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F54C42B0B2413000B7DB3A2D04C758005D637C03D70BBC00 /* Debug */,
+				F54C42B0B2413000B7DB3A2D04C758005D637C03D70BBC00 /* Debug */,
+				79B3EB4C3BAB20001BDEB3274867CE00447EC5FBBD523C00 /* Release */,
+				79B3EB4C3BAB20001BDEB3274867CE00447EC5FBBD523C00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F3F28D32D5B60000961D550DE272A800BEBD67E2575D1800 /* Build configuration list for PBXNativeTarget "Papaya" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17885BD77FF5EE008586D8DED68358003ED5DA70AEFC6C00 /* Debug */,
+				17885BD77FF5EE008586D8DED68358003ED5DA70AEFC6C00 /* Debug */,
+				3DC3DFA89BEBA0002555BBDFCB7D6E006E6B6949A68AAC00 /* Release */,
+				3DC3DFA89BEBA0002555BBDFCB7D6E006E6B6949A68AAC00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

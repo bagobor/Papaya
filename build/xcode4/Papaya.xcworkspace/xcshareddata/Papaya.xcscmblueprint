@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1B0EA20E950551900D8C933F24F874AEF50C7455",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "1A8B747D587007E4E71802B06564871455E36C59" : 0,
+    "0C95EEA8FF0C0E695973CB8EA4E7E70E385D606F" : 0,
+    "1B0EA20E950551900D8C933F24F874AEF50C7455" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "60C98604-16C0-4BCA-ABB9-E85F18A1C037",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "1A8B747D587007E4E71802B06564871455E36C59" : "Papaya\/ext\/nativefiledialog\/",
+    "0C95EEA8FF0C0E695973CB8EA4E7E70E385D606F" : "Papaya\/ext\/imgui\/",
+    "1B0EA20E950551900D8C933F24F874AEF50C7455" : "Papaya\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Papaya",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "build\/xcode4\/Papaya.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ocornut\/imgui.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0C95EEA8FF0C0E695973CB8EA4E7E70E385D606F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mlabbe\/nativefiledialog.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1A8B747D587007E4E71802B06564871455E36C59"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/bagobor\/Papaya.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1B0EA20E950551900D8C933F24F874AEF50C7455"
+    }
+  ]
+}
