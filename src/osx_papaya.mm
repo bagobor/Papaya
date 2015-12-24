@@ -246,12 +246,16 @@ int main()
             ImGuiIO& io = ImGui::GetIO();
             int width, height;
             glfwGetWindowSize(window,&width, &height);
+            int fbwidth, fbheight;
+//            glfwGetWindowSize(window,&Mem.Window.Width, &Mem.Window.Height);
+            glfwGetFramebufferSize(window,&fbwidth, &fbheight);
             
-            glfwGetFramebufferSize(window,&Mem.Window.Width, &Mem.Window.Height);
+            Mem.Window.Width = width;
+            Mem.Window.Height = height;
 
             // Setup display size (every frame to accommodate for window resizing)
             io.DisplaySize = ImVec2(width, height);
-			io.DisplayFramebufferScale = ImVec2(1, 1);
+			io.DisplayFramebufferScale = ImVec2(fbwidth/width, fbheight/height);
             
             // Read keyboard modifiers inputs
             io.KeyCtrl = (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) != GLFW_RELEASE) ||
@@ -280,7 +284,7 @@ int main()
 			}
 
             // Hide OS mouse cursor if ImGui is drawing it
-            Platform::SetCursorVisibility(io.MouseDrawCursor);
+            //Platform::SetCursorVisibility(io.MouseDrawCursor);
 
             // Start the frame
             ImGui::NewFrame();

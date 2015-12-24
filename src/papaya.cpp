@@ -2011,6 +2011,8 @@ void RenderImGui(ImDrawData* DrawData)
 
     // Handle cases of screen coordinates != from framebuffer coordinates (e.g. retina displays)
     ImGuiIO& io     = ImGui::GetIO();
+    
+    glViewport(0,0,io.DisplaySize.x*io.DisplayFramebufferScale.x,io.DisplaySize.y*io.DisplayFramebufferScale.y);
     float fb_height = io.DisplaySize.y * io.DisplayFramebufferScale.y;
     DrawData->ScaleClipRects(io.DisplayFramebufferScale);
 

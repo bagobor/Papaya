@@ -12,6 +12,7 @@
 		2203A9EDF79FA80064ACBFE9998944003427686A90B05600 /* imgui_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F70534A38AF3780033BE3C275916CA002AB496EAE0251C00 /* imgui_demo.cpp */; };
 		37A6CFCC0840B00089A9C4657B6240005F4FBA0BDC278000 /* libglfw.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A91AB12B0580006DA13E1D8665A8004DBDDF34C8A94800 /* libglfw.a */; };
 		56C419D01C2BCC3F0053F09A /* img in Resources */ = {isa = PBXBuildFile; fileRef = 56C419CF1C2BCC3F0053F09A /* img */; };
+		56C419D21C2BEAF20053F09A /* papaya.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56C419D11C2BEAF20053F09A /* papaya.plist */; };
 		8B75096AC3255000D31D8D860773F8008D05FCE1499B3000 /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 471CA1F7C667380020EA0514E832E4008CB55FBA24E81000 /* imgui.cpp */; };
 		D00167ABFB44900012AA7DA79D2E2A00E225262894554000 /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE549F488D8438001B0DA6CC5BA78F001204018FE2B5E200 /* imgui_draw.cpp */; };
 		F2134EF72BCE0800441643909EEF980019BC3936FFB4D800 /* libglew.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 811D64CFCB5918004815883C26B940002832295368FCE200 /* libglew.a */; };
@@ -55,6 +56,7 @@
 		4A63B5C5DE61B400CD1654B2A1CD78005922ED99E0711C00 /* imconfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imconfig.h; path = ../../ext/imgui/imconfig.h; sourceTree = "<group>"; };
 		55D78A8C9CEBDC00E71E0DF85FAC40007FE4DA93BCE11C00 /* nfd_common.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = nfd_common.c; path = ../../ext/nativefiledialog/src/nfd_common.c; sourceTree = "<group>"; };
 		56C419CF1C2BCC3F0053F09A /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; name = img; path = ../../img; sourceTree = "<group>"; };
+		56C419D11C2BEAF20053F09A /* papaya.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = papaya.plist; sourceTree = "<group>"; };
 		69940320113FB400A64D0AA3DF6308009D43656766715800 /* papaya_platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = papaya_platform.h; path = ../../src/papaya_platform.h; sourceTree = "<group>"; };
 		8A550A38FD0F8800D9D56DB0D5C6E002407D08E0B493800 /* glew.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = glew.xcodeproj; path = glew/glew.xcodeproj; sourceTree = SOURCE_ROOT; };
 		8C7AEEB8288C1800A29455723F9EB000A6D485E92FBAA800 /* papaya.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = papaya.h; path = ../../src/papaya.h; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				69940320113FB400A64D0AA3DF6308009D43656766715800 /* papaya_platform.h */,
 				F203B4FC52A0D00012325840F081D0001EC7C50EC8001500 /* papaya_platform_common.impl */,
 				C9B45B31AE23C0004C66FA1E718F8000D8739305B0332800 /* papaya_util.h */,
+				56C419D11C2BEAF20053F09A /* papaya.plist */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56C419D21C2BEAF20053F09A /* papaya.plist in Resources */,
 				56C419D01C2BCC3F0053F09A /* img in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,6 +310,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CONFIGURATION_BUILD_DIR = Debug;
 				GCC_DYNAMIC_NO_PIC = NO;
+				INFOPLIST_FILE = "$(SRCROOT)/papaya.plist";
 				INSTALL_PATH = "\"$(HOME)/Applications\"";
 				PRODUCT_NAME = Papaya;
 			};
@@ -318,6 +323,7 @@
 				CONFIGURATION_BUILD_DIR = Release;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_DYNAMIC_NO_PIC = NO;
+				INFOPLIST_FILE = "$(SRCROOT)/papaya.plist";
 				INSTALL_PATH = "\"$(HOME)/Applications\"";
 				PRODUCT_NAME = Papaya;
 			};
